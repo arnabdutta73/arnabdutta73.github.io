@@ -1,3 +1,3 @@
 git add --all
 git commit -m 'commiting'
-git push -u master
+git push -u origin master
