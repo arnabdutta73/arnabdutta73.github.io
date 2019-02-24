@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -14,15 +14,131 @@
     crossorigin="anonymous">
 
 <head>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+        type="text/css">
+    <style>
+        .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My CV</title>
-
 </head>
 
 <body>
     <div class="container-fluid">
+        <div class="row-fluid" style="padding:20px;">
+            <div>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"">
+                    <a class="
+                    navbar-brand display-4" href="#">Arnab</a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./geos.html">Geospatial Stuff</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:400px">
+                    <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture" height="500px">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title display-4">Arnab Dutta</h4>
+                        <dl>
+                            <dt>Contact</dt>
+                            <dd>- Email: <a href="mailto:arnabdutta73@gmail.com">arnabdutta73@gmail.com</a></dd>
+                            <dd>- Number: 9406024573, 9582582587</dd>
+                            <dd>- Place: <a href="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9538477,77.3507442,10z/data=!3m1!4b1!4m5!3m4!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627?hl=en-IN"
+                                    target="_blank"> Bangalore, Karnataka</a></dd>
+                            <dt>Technology</dt>
+                            <dd>- <code>Python</code>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:70%"></div>
+                                </div>
+                            </dd>
+                            <dd>- <code>Postgres</code>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
+                                </div>
+                            </dd>
+                            <dd>- <code>JavaScript</code>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:60%"></div>
+                                </div>
+                            </dd>
+                            <dd>- <code>QGIS</code>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
+                                </div>
+                            </dd>
+                            <dd>- <code>HTML</code>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
+                                </div>
+                            </dd>
+                            <dt>Other Technologies</dt>
+                            <dd><code>PostGIS, Geoserver, PHP, ArcGIS, Leaflet, Mapbox Vector Maps</code></dd>
+                            <dt>Hobbies</dt>
+                            <dd>Football, Novels, Comic Books, Sports, Video Games</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="row">
+                    <h1 class="display-3 text-primary">My Locations</h1>
+                </div>
+                <div class="row">
+                    <div id="map" class="map"></div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script type="text/javascript">
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([77, 24]),
+                zoom: 4
+            })
+        });
+        var marker = [];
+        var array = [[77.068896, 28.5272181],[77.3507279, 12.9538477]];
+        for (let index = 0; index < array.length; index++) {
+            marker.push( new ol.Feature({
+            geometry: new ol.geom.Point(
+                ol.proj.fromLonLat(array[index])
+            ),
+        })
+        );
+            
+        }
+       
+        var vectorSource = new ol.source.Vector({
+            features: marker
+        });
+        var markerVectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+        });
+        map.addLayer(markerVectorLayer);
+    </script>
 </body>
 
 </html>
