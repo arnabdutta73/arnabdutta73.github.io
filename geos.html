@@ -23,6 +23,8 @@
         }
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://unpkg.com/ol-layerswitcher@3.0.0"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.0.0/src/ol-layerswitcher.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My CV</title>
@@ -50,7 +52,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:400px">
+                <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:100%">
                     <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture" height="500px">
 
                     <div class="card-body">
@@ -105,45 +107,47 @@
             <div class="col-md-8 card border shadow-lg p-4 mb-4 bg-white float-right" style="width:100%">
                 <div class="card-body">
 
-
-                    <h1 class="display-4 text-primary">Places I've stayed</h1>
+                    <h1 class="display-4 text-primary">Examples of geospatial abilities</h1>
+                    <h3 class="text-primary">- Places stayed</h3>
                     <div id="map_loc" class="map" style="border: 1px solid black;"></div>
-                    <h1 class="display-4 text-primary">Cities I've explored</h1>
-                    <div id="map_project" class="map" style="border: 1px solid black;"></div>
+                    <h3 class="text-primary" style="padding-top: 20px;">- Cities explored</h3>
+                    <div id="map_city" class="map" style="border: 1px solid black;"></div>
+                    <h3 class="text-primary" style="padding-top: 20px;">- Sample of projects done</h3>
+                    <div id="map_project" class="map" style="border: 1px solid black;">
+                        <div id="popup"></div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="footer-copyright text-right fixed-bottom py-3 font-italic font-weight-lighter">2019 ©
+            <a> Arnab Dutta</a>
         </div>
     </div>
 
     <script type="text/javascript">
-        var map = new ol.Map({
-            target: 'map_loc',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
+        function createMap(params) {
+            var target = params.target;
+            var center = params.center;
+            var zoom = params.zoom;
+            return new ol.Map({
+                target: target,
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat(center),
+                    zoom: zoom
                 })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([77, 24]),
-                zoom: 4
-            })
-        });
-        var map_project = new ol.Map({
-            target: 'map_project',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([77, 24]),
-                zoom: 4
-            })
-        });
+            });
+        }
+
         function addMarkers(params) {
             var array = params.array;
             var marker = params.marker;
             var map = params.map;
+            var title = params.title;
             for (let index = 0; index < array.length; index++) {
                 marker.push(new ol.Feature({
                     geometry: new ol.geom.Point(
@@ -159,29 +163,152 @@
             });
             var markerVectorLayer = new ol.layer.Vector({
                 source: vectorSource,
+                title: title
             });
             map.addLayer(markerVectorLayer);
         }
+
+
+        var map = createMap({
+            target: 'map_loc',
+            center: [77, 24],
+            zoom: 4
+        });
+
+        var map_city = createMap({
+            target: 'map_city',
+            center: [77, 24],
+            zoom: 4
+        });
+
+        // var map_project = createMap({
+        //     target: 'map_project',
+        //     center: [77, 24],
+        //     zoom: 4
+        // });
+
+
+
         var marker = [];
         var array = [[78.028071, 30.547920], [77.591275, 12.963513], [77.207205, 28.608010], [82.138825, 22.077863], [81.279349, 21.185910]];
-        
+
         addMarkers({
             array: array,
             marker: marker,
-            map: map
+            map: map,
+            title: 'Stay'
         });
 
         var marker = [];
         var array = [[79.575447, 30.313617], [78.062364, 30.456789], [74.854706, 31.634391], [76.765193, 30.727375], [75.806458, 26.913855],
-                    [74.635175, 26.441811], [73.699749, 24.586944], [72.566894, 23.053673], [78.186349, 26.216075], [78.041876, 27.174050], 
-                    [88.364657, 22.563804], [87.311339, 22.314712], [81.633153, 21.247186], [79.939832, 23.169274], [72.876073, 19.057290],
-                    [73.866350, 18.513059], [73.791216, 19.986092], [79.098919, 21.138206], [79.833555, 11.928491]];
-        
+        [74.635175, 26.441811], [73.699749, 24.586944], [72.566894, 23.053673], [78.186349, 26.216075], [78.041876, 27.174050],
+        [88.364657, 22.563804], [87.311339, 22.314712], [81.633153, 21.247186], [79.939832, 23.169274], [72.876073, 19.057290],
+        [73.866350, 18.513059], [73.791216, 19.986092], [79.098919, 21.138206], [79.833555, 11.928491]];
+
         addMarkers({
             array: array,
             marker: marker,
-            map: map_project
+            map: map_city
         });
+
+
+
+
+
+
+        
+        var lines = [[77.552899894067821, 13.038447130636914], [77.572364936440721, 13.032351737389682], [77.565413135593261, 13.024901608480345],
+        [77.559851694915295, 13.014403319221611], [77.57201734639834, 13.01271000511149], [77.576883606991558, 13.001872520998841],
+        [77.566108315678008, 12.992389334093033], [77.547686043432222, 12.97647031345363], [77.549423993644098, 12.965969975959766],
+        [77.567846265889855, 12.955807937149896], [77.567151085805122, 12.939886576102817], [77.552899894067821, 12.932772447830857],
+        [77.552552304025468, 12.924302983033765], [77.554985434322063, 12.922947841999777], [77.58974443855935, 12.923625413436097],
+        [77.596001059322063, 12.945645483681863], [77.597391419491558, 12.961227742802999], [77.591482388771226, 12.971050839773289],
+        [77.59252515889834, 12.980873548844274], [77.596001059322063, 12.987647604813835], [77.605038400423766, 12.990018480769084],
+        [77.611295021186478, 13.000856482589182], [77.611295021186478, 13.000856482589182], [77.601910090042395, 13.018805881772055],
+        [77.613728151483073, 13.026256194045065], [77.645706435381385, 13.021515112158918], [77.644663665254271, 12.987647604813835],
+        [77.632845603813578, 12.965631248016585], [77.631455243644112, 12.944629215540509], [77.631455243644112, 12.944629215540509],
+        [77.631455243644112, 12.944629215540509], [77.552899894067821, 13.038447130636914]];
+
+        var linestring = new ol.geom.LineString(lines);
+        linestring.transform('EPSG:4326', 'EPSG:3857');
+        var feature1 = new ol.Feature(linestring);
+
+        // Create vector source and the feature to it.
+        var vectorSource1 = new ol.source.Vector();
+        vectorSource1.addFeature(feature1);
+
+        // Create vector layer attached to the vector source.
+        var vectorLayer1 = new ol.layer.Vector({
+            source: vectorSource1,
+            title: 'LineString Layer'
+        });
+
+
+
+
+        var poly = [[[82.51452268850467, 13.241343411526101], [82.719632259787346, 13.192773478504545], [82.802784788685756, 13.181978847927676], [83.240721440883902, 13.176581353984274], [83.329417471708865, 13.122599874660688], [83.401482996754112, 12.998397541944206], [83.418113502533799, 12.80927486787766], [83.423657004460352, 12.495559802647536], [83.368221985194765, 12.268148388052014], [83.318330467855716, 11.97005119777155], [83.28506945629637, 11.785607800357541], [83.251808444737037, 11.60104043460124], [83.190829923544868, 11.416350933677293], [83.07441638308714, 11.285909338202798], [82.664197240521773, 11.269599956545832], [82.392565646120374, 11.236978419035736], [82.17082556905801, 11.166285774312115], [81.843758955391024, 11.128213364409842], [81.444626816678777, 11.14996963767573], [81.233973743469519, 11.188039196325549], [80.890276624022874, 11.329396489991508], [80.757232577785459, 11.394614812751314], [80.624188531548043, 11.410917059422307], [80.291578415954504, 11.470683945057756], [80.125273358157742, 11.508710836215213], [79.914620284948484, 11.606470638807654], [79.781576238711068, 11.649908463320058], [79.670706200179879, 11.731336067736438], [79.648532192473652, 11.807313493307939], [79.631901686693965, 11.904967798310492], [79.648532192473652, 11.997164660641943], [79.726141219445466, 12.143530102996943], [79.837011257976656, 12.284398615766083], [79.909076783021931, 12.398122041412574], [79.953424798434384, 12.490147554244052], [80.019946821553106, 12.668691680250205], [80.047664331185899, 12.80927486787766], [80.080925342745246, 12.922765642343325], [80.086468844671813, 13.030804167715893], [80.152990867790521, 13.144193892006852], [80.197338883202988, 13.208964530416072], [80.213969388982676, 13.23594723004201], [80.286034914027923, 13.343848086892484], [80.419078960265367, 13.397780471297628], [80.480057481457493, 13.408565498882947], [80.557666508429335, 13.408565498882947], [80.812667597051046, 13.473265489049936], [80.862559114390081, 13.478656366056189], [81.006690164480617, 13.494828267474198], [81.20625623383674, 13.494828267474198], [81.367017789706964, 13.462483370506948], [81.505605337870932, 13.424742132761214], [81.638649384108348, 13.419350042528487], [81.738432418786402, 13.419350042528487], [81.92691148428942, 13.446309282041133], [81.998977009334695, 13.462483370506948], [82.198543078690804, 13.424742132761214], [82.414739653826615, 13.322271758173725], [82.51452268850467, 13.241343411526101]]];
+        var polygon = new ol.geom.Polygon(poly);
+        polygon.transform('EPSG:4326', 'EPSG:3857');
+        var feature = new ol.Feature(polygon);
+
+        // Create vector source and the feature to it.
+        var vectorSource = new ol.source.Vector();
+        vectorSource.addFeature(feature);
+
+        // Create vector layer attached to the vector source.
+        var vectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+            title: 'Tsunami Layer'
+        });
+        // var popup = new ol.Overlay({
+        //     element: document.getElementById('popup')
+        // });
+        // map_project.addOverlay(popup);
+        // map_project.on('singleclick', function (evt) {
+        //     var selectedFeature = null;
+        //     var coordinate = evt.coordinate;
+        //     var feature = map_project.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+        //         console.log('layer', layer);
+        //         if (layer === vectorLayer) {
+        //             selectedFeature = feature;
+        //             popup.show('hello');
+        //         }
+        //     });
+        //     console.log('selectedFeature', selectedFeature);
+        // });
+        // map_project.on('click', function (evt) {
+        //     console.log('evt', evt);
+        // });
+        // Add the vector layer to the map.
+
+
+            var map_project = new ol.Map({
+                target: 'map_project',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                        title: 'OSM Map',
+                        type: 'base'
+                    }),
+                    vectorLayer,
+                    vectorLayer1
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([77, 24]),
+                    zoom: 4
+                })
+            });
+
+            addMarkers({
+            array: array,
+            marker: marker,
+            map: map_project,
+            title: 'Cities Visited'
+        });
+
+
+        
+        map_project.addControl(new ol.control.LayerSwitcher());
 
     </script>
 </body>
