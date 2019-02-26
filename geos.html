@@ -10,6 +10,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -147,6 +148,7 @@
             var array = params.array;
             var marker = params.marker;
             var map = params.map;
+            var iconStyle = params.iconStyle;
             var title = params.title;
             for (let index = 0; index < array.length; index++) {
                 marker.push(new ol.Feature({
@@ -163,7 +165,8 @@
             });
             var markerVectorLayer = new ol.layer.Vector({
                 source: vectorSource,
-                title: title
+                title: title,
+                style: iconStyle
             });
             map.addLayer(markerVectorLayer);
         }
@@ -192,10 +195,24 @@
         var marker = [];
         var array = [[78.028071, 30.547920], [77.591275, 12.963513], [77.207205, 28.608010], [82.138825, 22.077863], [81.279349, 21.185910]];
 
+
+
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */({
+                anchor: [0.5, 0.5],
+                opacity: 0.75,
+                src: 'images/home.png',
+                // size: [10, 10],
+                // offset: [0,0],
+                // the scale factor
+                scale: 0.1
+            }))
+        });
         addMarkers({
             array: array,
             marker: marker,
             map: map,
+            iconStyle: iconStyle,
             title: 'Stay'
         });
 
@@ -205,10 +222,24 @@
         [88.364657, 22.563804], [87.311339, 22.314712], [81.633153, 21.247186], [79.939832, 23.169274], [72.876073, 19.057290],
         [73.866350, 18.513059], [73.791216, 19.986092], [79.098919, 21.138206], [79.833555, 11.928491]];
 
+
+
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */({
+                anchor: [0.5, 0.5],
+                opacity: 0.75,
+                src: 'images/city.png',
+                // size: [10, 10],
+                // offset: [0,0],
+                // the scale factor
+                scale: 0.3
+            }))
+        });
         addMarkers({
             array: array,
             marker: marker,
-            map: map_city
+            map: map_city,
+            iconStyle: iconStyle
         });
 
 
@@ -216,7 +247,7 @@
 
 
 
-        
+
         var lines = [[77.552899894067821, 13.038447130636914], [77.572364936440721, 13.032351737389682], [77.565413135593261, 13.024901608480345],
         [77.559851694915295, 13.014403319221611], [77.57201734639834, 13.01271000511149], [77.576883606991558, 13.001872520998841],
         [77.566108315678008, 12.992389334093033], [77.547686043432222, 12.97647031345363], [77.549423993644098, 12.965969975959766],
@@ -282,24 +313,24 @@
         // Add the vector layer to the map.
 
 
-            var map_project = new ol.Map({
-                target: 'map_project',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                        title: 'OSM Map',
-                        type: 'base'
-                    }),
-                    vectorLayer,
-                    vectorLayer1
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([77, 24]),
-                    zoom: 4
-                })
-            });
+        var map_project = new ol.Map({
+            target: 'map_project',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    title: 'OSM Map',
+                    type: 'base'
+                }),
+                vectorLayer,
+                vectorLayer1
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([77, 24]),
+                zoom: 4
+            })
+        });
 
-            addMarkers({
+        addMarkers({
             array: array,
             marker: marker,
             map: map_project,
@@ -307,8 +338,55 @@
         });
 
 
-        
+        var markerVectorLayer1 = null;
         map_project.addControl(new ol.control.LayerSwitcher());
+        setInterval(function () {
+            var marker = [];
+            if (markerVectorLayer1 != null) {
+                map_project.removeLayer(markerVectorLayer1);
+            }
+            $.ajax({
+                type: "GET",
+                url: 'https://opensky-network.org/api/states/all?lamin=5&lomin=64&lamax=34&lomax=90',
+                success: function (resp) {
+                    resp.states.forEach(flight => {
+                        marker.push(new ol.Feature({
+                            geometry: new ol.geom.Point(
+                                ol.proj.fromLonLat([flight[5], flight[6]])
+                            ),
+                            origin_country: flight[2],
+                            altitude: flight[13]
+                        })
+                        );
+
+
+                    });
+                    var iconStyle = new ol.style.Style({
+                        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */({
+                            anchor: [0.5, 0.5],
+                            opacity: 0.75,
+                            src: 'images/plane3.png',
+                            // size: [10, 10],
+                            // offset: [0,0],
+                            // the scale factor
+                            scale: 0.05
+                        }))
+                    });
+                    var vectorSource = new ol.source.Vector({
+                        features: marker
+                    });
+                    markerVectorLayer1 = new ol.layer.Vector({
+                        source: vectorSource,
+                        title: 'Flight',
+                        style: iconStyle
+                    });
+                    map_project.addLayer(markerVectorLayer1);
+
+
+                }
+            });
+        }, 10000);
+
 
     </script>
 </body>
