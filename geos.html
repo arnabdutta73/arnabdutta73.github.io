@@ -22,6 +22,50 @@
             height: 400px;
             width: 100%;
         }
+
+        .parallax {
+            /* The image used */
+            background-image: url("images/map.jpeg");
+
+            /* Set a specific height */
+            min-height: 500px;
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text {
+            opacity: 0.9;
+            background-color: white;
+            color: black;
+            font-size: 10vw;
+            /* Responsive font size */
+            font-weight: bold;
+            margin: 0 auto;
+            /* Center the text container */
+            padding: 10px;
+            width: 50%;
+            text-align: center;
+            /* Center text */
+            position: absolute;
+            /* Position text */
+            top: 50%;
+            /* Position text in the middle */
+            left: 50%;
+            /* Position text in the middle */
+            transform: translate(-50%, -50%);
+            /* Position text in the middle */
+            mix-blend-mode: screen;
+            /* This makes the cutout text possible */
+        }
+    
+        .map {
+            height: 400px;
+            width: 100%;
+        }
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="https://unpkg.com/ol-layerswitcher@3.0.0"></script>
@@ -51,7 +95,12 @@
                 </nav>
             </div>
         </div>
-        <div class="row">
+        <div class="parallax" style="height: 400px">
+            <h6 class = "text" style="text-justify: left; width: auto; height: auto; font-size: 25px; padding-top: 2px; text-shadow: 5px 2px 2px white, 1px white;">
+                    It is not primarily our physical selves that limit us but rather our mindset about our physical limits. <br> - E. Langer</h6>
+        </div>
+        <div class="parallax">
+        <div class="row" style="opacity: 0.95;">
             <div class="col-md-4">
                 <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:100%">
                     <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture" height="500px">
@@ -119,6 +168,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <div class="footer-copyright text-right fixed-bottom py-3 font-italic font-weight-lighter">2019 ©
             <a> Arnab Dutta</a>
@@ -202,9 +252,6 @@
                 anchor: [0.5, 0.5],
                 opacity: 0.75,
                 src: 'images/home.png',
-                // size: [10, 10],
-                // offset: [0,0],
-                // the scale factor
                 scale: 0.1
             }))
         });
@@ -229,9 +276,6 @@
                 anchor: [0.5, 0.5],
                 opacity: 0.75,
                 src: 'images/city.png',
-                // size: [10, 10],
-                // offset: [0,0],
-                // the scale factor
                 scale: 0.3
             }))
         });

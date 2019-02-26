@@ -10,14 +10,53 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-    crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My CV</title>
+    <style>
+        .parallax {
+            /* The image used */
+            background-image: url("images/map.jpeg");
 
+            /* Set a specific height */
+            min-height: 500px;
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text {
+            opacity: 0.9;
+            background-color: white;
+            color: black;
+            font-size: 10vw;
+            /* Responsive font size */
+            font-weight: bold;
+            margin: 0 auto;
+            /* Center the text container */
+            padding: 10px;
+            width: 50%;
+            text-align: center;
+            /* Center text */
+            position: absolute;
+            /* Position text */
+            top: 50%;
+            /* Position text in the middle */
+            left: 50%;
+            /* Position text in the middle */
+            transform: translate(-50%, -50%);
+            /* Position text in the middle */
+            mix-blend-mode: screen;
+            /* This makes the cutout text possible */
+        }
+    </style>
 </head>
 
 <body>
@@ -38,227 +77,256 @@
                 </ul>
             </nav>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:100%">
-                    <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture" height="500px">
+        <div class="parallax" style="height: 400px">
+            <h6 class = "text" style="text-justify: left; width: auto; height: auto; font-size: 25px; padding-top: 2px; text-shadow: 5px 2px 2px white, 1px white;">Humanity has only
+                scratched the surface of its real potential. <br> - Peace Pilgrim</h6>
+        </div>
+        <div class="parallax">
+            <div class="row" style="opacity: 0.95;">
+                <div class="col-md-4">
+                    <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:100%">
+                        <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture"
+                            height="500px">
 
+                        <div class="card-body">
+
+                            <h4 class="card-title display-4">Arnab Dutta</h4>
+                            <dl>
+                                <dt>Contact</dt>
+                                <dd>- Email: <a href="mailto:arnabdutta73@gmail.com">arnabdutta73@gmail.com</a></dd>
+                                <dd>- Number: 9406024573, 9582582587</dd>
+                                <dd>- Place: <a
+                                        href="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9538477,77.3507442,10z/data=!3m1!4b1!4m5!3m4!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627?hl=en-IN"
+                                        target="_blank"> Bangalore, Karnataka</a></dd>
+                                <dt>Technology</dt>
+                                <dd>- <code>Python</code>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            style="width:70%"></div>
+                                    </div>
+                                </dd>
+                                <dd>- <code>Postgres</code>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            style="width:50%"></div>
+                                    </div>
+                                </dd>
+                                <dd>- <code>JavaScript</code>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            style="width:60%"></div>
+                                    </div>
+                                </dd>
+                                <dd>- <code>QGIS</code>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            style="width:50%"></div>
+                                    </div>
+                                </dd>
+                                <dd>- <code>HTML</code>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            style="width:40%"></div>
+                                    </div>
+                                </dd>
+                                <dt>Other Technologies</dt>
+                                <dd><code>PostGIS, Geoserver, PHP, ArcGIS, Leaflet, Mapbox Vector Maps</code></dd>
+                                <dt>Hobbies</dt>
+                                <dd>Football, Novels, Comic Books, Sports, Video Games</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 card border shadow-lg p-4 mb-4 bg-white float-right" style="width:500px">
                     <div class="card-body">
-
-                        <h4 class="card-title display-4">Arnab Dutta</h4>
+                        <div>
+                            <h3 class="display-2 text-primary"> Geospatial Analyst</h3>
+                            <footer class="blockquote-footer"><i class="fa fa-map-marker"></i> <i
+                                    class="fa fa-map-signs"></i>
+                                <i class="fa fa-map"></i> <i class="fa fa-search"></i></footer>
+                            <p class="text-justify">
+                                Strong engineering professional with a <strong>Master of Technology</strong> Degree in
+                                <strong>Remote
+                                    Sensing & GIS</strong>
+                                with Specialisation in <strong>Geoinformatics</strong> from <strong>Indian Institute of
+                                    Remote
+                                    Sensing, ISRO, Dehradun</strong>.
+                                Experience in <strong>3D GIS</strong> software development, <strong>Web-GIS</strong> API
+                                development, Data Analysis with <strong>python</strong>.
+                            </p>
+                        </div>
                         <dl>
-                            <dt>Contact</dt>
-                            <dd>- Email: <a href="mailto:arnabdutta73@gmail.com">arnabdutta73@gmail.com</a></dd>
-                            <dd>- Number: 9406024573, 9582582587</dd>
-                            <dd>- Place: <a href="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9538477,77.3507442,10z/data=!3m1!4b1!4m5!3m4!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627?hl=en-IN"
-                                    target="_blank"> Bangalore, Karnataka</a></dd>
-                            <dt>Technology</dt>
-                            <dd>- <code>Python</code>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:70%"></div>
-                                </div>
+                            <dt class="text-primary display-5">INDUSTRY EXPERIENCE</dt>
+
+                            Sep, 2018 - Present. Duration: <i><label id="years"></label> years <label
+                                    id="months"></label>
+                                months</i>
+                            <dd>- <strong>Trinity Mobility Pvt. Ltd.</strong>, Bangalore, Karnataka
+                                <ul>
+                                    <li>R&D on routing and geofencing for vehicle tracking. - (JavaScript)</li>
+                                    <li>R&D on 3D Engine for disaster management project. - (JavaScript)</li>
+                                </ul>
                             </dd>
-                            <dd>- <code>Postgres</code>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
-                                </div>
+                            Aug, 2016 - Sep, 2018. Duration: <i>2 years 1 month</i>
+                            <dd>- <strong>MapmyIndia - CE Info Pvt. Ltd.</strong>, New Delhi, Delhi
+                                <ul>
+                                    <li>R&D on Indoor mapping and routing technology using SLAM technique. - (NavVis)
+                                    </li>
+                                    <li>R&D on live tracking using 3D LiDAR asset tracking technology. - (Quanergy)</li>
+                                    <li>Created a 3D Globe Engine for MapmyIndia Maps and data. - (Cesium, JS, HTML,
+                                        PHP)</li>
+                                    <li>Worked on in-house standards for High Definition Maps. - (QGIS, PostgreSQL)</li>
+                                    <li>Creating a Web API for fetching GIS based Data. - (OpenLayers 3, Leaflet, JS,
+                                        Geoserver,
+                                        PostgreSQL)
+                                    </li>
+                                    <li>Created vector map for MapmyIndia which is being used in the company’s flagship
+                                        product-MapmyIndia Maps. - (JSON, JS, HTML)
+                                    </li>
+                                    <li>Developed in-house algorithm for GPS based automatic digitisation of road
+                                        network.
+                                        -
+                                        (Python, PostGIS)
+                                    </li>
+                                    <li>GPS track based analysis for automated detection of new flyovers . - (Python,
+                                        PostGIS)
+                                    </li>
+                                    <li>Developed a dashboard for status monitoring of GPS track analysis project. -
+                                        (PHP,
+                                        HTML,
+                                        PostgreSQL)
+                                    </li>
+                                </ul>
                             </dd>
-                            <dd>- <code>JavaScript</code>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:60%"></div>
-                                </div>
+                            <dt class="text-primary">RESEARCH EXPERIENCE</dt>
+                            Aug, 2015 - Aug, 2016. Duration: <i>1 year</i>
+                            <dd>- <strong>Indian institute od Remote Sensing</strong>, Dehradun, Uttarakhand
+                                <ul>
+
+                                    <li>Major Project on 3D City Modelling using OGC’s CityGML, Indoor network routing &
+                                        positioning - (CityGML, Python, KML, ArcPy, ArcGIS, SketchUp)
+                                    </li>
+                                    <ul>
+                                        <li>Proposed an Indoor routing extension of OGC’s CityGML Application Domain
+                                            Extension.
+                                        </li>
+                                        <li>3D LOD4 Modelling using CityGML schema with the help of Sketchup.</li>
+                                        <li>Indoor Network Routing on the ArcGIS network dataset using ArcPy.</li>
+                                        <li>Indoor positioning using WiFi network signals.</li>
+                                        <li>Subsurface pipeline mapping using Ground Penetrating RADAR.</li>
+                                    </ul>
+                                    <li>Minor project on python based Android App for emergency services. - (Python4A,
+                                        Google
+                                        Rev-Geocode API, PyQt4)
+                                    </li>
+                                    <ul>
+                                        <li>Presented a paper at a National Conference FOSS4G India- 2015</li>
+                                        <li>An SOS button Android App for emergencies.</li>
+                                        <li>Google Reverse Geocoding API for address of the victim.</li>
+                                    </ul>
+                                    <li>Micro projects: Indian Infrastructure: A GIS Website</li>
+                                    <ul>
+                                        <li>A website to display various layers of Indian Infrastructure.</li>
+                                    </ul>
+                                </ul>
                             </dd>
-                            <dd>- <code>QGIS</code>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%"></div>
-                                </div>
+                            <dt class="text-primary">EDUCATION</dt>
+                            Aug, 2014 - Aug, 2016
+                            <dd>- <strong>Master of Technology</strong>, Remote Sensing and GIS, <i>Indian Institute of
+                                    Remote
+                                    Sensing</i>
+                                <ul>
+                                    <li>8.17/10 CGPA</li>
+                                </ul>
                             </dd>
-                            <dd>- <code>HTML</code>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
-                                </div>
+                            <dd>- <strong>Bachelor of Engineering</strong>, Electrical Engineering, <i>Bhilai Institute
+                                    of
+                                    Technology</i>
+                                <ul>
+                                    <li>7.87/10 CGPA</li>
+                                </ul>
                             </dd>
-                            <dt>Other Technologies</dt>
-                            <dd><code>PostGIS, Geoserver, PHP, ArcGIS, Leaflet, Mapbox Vector Maps</code></dd>
-                            <dt>Hobbies</dt>
-                            <dd>Football, Novels, Comic Books, Sports, Video Games</dd>
+                            <dd>- <strong>Senior Secondary Education</strong>, Computer Science, <i>DAV Public
+                                    School</i>
+                                <ul>
+                                    <li>83%</li>
+                                </ul>
+                            </dd>
+                            <dt class="text-primary text-justify">PUBLICATIONS</dt>
+                            <dd class="text-justify">- Dutta, A., Saran, S., & Kumar, A. S. (2017). <strong>Development
+                                    of CityGML Application
+                                    Domain
+                                    Extension for Indoor Routing and Positioning</strong>.
+                                Journal of the Indian Society of Remote Sensing, 45(6), 993-1004.
+                                <ul>
+                                    <li>This article proposes an extension of the CityGML schema to add attributes of
+                                        indoor
+                                        routing and positioning
+                                        using the facility of Application Domain Extension (ADE).
+                                    </li>
+                                </ul>
+                            </dd>
+                            <dd class="text-justify">- Dutta, A., & Saran, S. <strong>3D modeling of subsurface
+                                    utilities using Ground
+                                    Penetrating
+                                    Radar (GPR) data</strong>.
+                                Journal of Geomatics. Vol 10 No. 2 October 2016 (p. 217). (Short note)
+                                <ul>
+                                    <li>This article represents the outputs (radius of pipes and 3D models) obtained by
+                                        mapping
+                                        the subsurface utilities using a Ground Penetrating RADAR.
+                                    </li>
+                                </ul>
+                            </dd>
+                            <dd class="text-justify">- Dutta, A. and Agarwal, N. <strong>Android based crime mapping
+                                    using python</strong>. In:
+                                FOSS4G India 2015 - Conference Web Proceedings, 9-10th June, 2015. Dehradun.
+                                <ul>
+                                    <li>This conference presentation is a showcase of an Android application built using
+                                        python
+                                        which alerts the device’s location, IMEI, & IMSI numbers onto the server display
+                                        unit.
+                                    </li>
+                                </ul>
+                            </dd>
+                            <dt class="text-primary">ACHIEVEMENTS</dt>
+                            <dd class="text-justify">- Best Paper Award for my paper titled 'Development of CityGML
+                                Application Domain Extension
+                                for
+                                Indoor Routing and Positioning' published in Journal of Indian Society of Remote Sensing
+                                2017.
+                            </dd>
+
+                            <dd class="text-justify">- Represented MapmyIndia at the Auto Expo (Greater Noida), 2018 for
+                                3D LiDAR asset tracking
+                                technology.
+                            </dd>
+                            <dd class="text-justify">- Presented a paper at National Conference on Free and Open Source
+                                Software for Geospatial
+                                FOSS4G-India 2015.
+                            </dd>
+                            <dd class="text-justify">- Winner Basketball and Runners up Volleyball, Chess, Carrom in
+                                2017 MapmyIndia’s Sports
+                                Fest.
+                            </dd>
+                            <dd class="text-justify">- Winner Badminton Mix Doubles, Volleyball, Basketball, Tug of War
+                                and Runners up Badminton
+                                Men
+                                Doubles in 2016 Sports Tournament, IIRS-ISRO, Dehradun.
+                            </dd>
+                            <dd>- Winner of Best Mechanical Design in Air Boat racing in Kshitij’12, an IIT KGP fest.
+                            </dd>
+                            <dd>- Winner of Inter College & Inter Zone Football Championship, BIT, Durg (2012-13).</dd>
+
                         </dl>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 card border shadow-lg p-4 mb-4 bg-white float-right" style="width:500px">
-                <div class="card-body">
-                    <div>
-                        <h3 class="display-2 text-primary"> Geospatial Analyst</h3>
-                        <footer class="blockquote-footer"><i class="fa fa-map-marker"></i> <i class="fa fa-map-signs"></i>
-                            <i class="fa fa-map"></i> <i class="fa fa-search"></i></footer>
-                        <p class="text-justify">
-                            Strong engineering professional with a <strong>Master of Technology</strong> Degree in
-                            <strong>Remote
-                                Sensing & GIS</strong>
-                            with Specialisation in <strong>Geoinformatics</strong> from <strong>Indian Institute of
-                                Remote
-                                Sensing, ISRO, Dehradun</strong>.
-                            Experience in <strong>3D GIS</strong> software development, <strong>Web-GIS</strong> API
-                            development, Data Analysis with <strong>python</strong>.
-                        </p>
-                    </div>
-                    <dl>
-                        <dt class="text-primary display-5">INDUSTRY EXPERIENCE</dt>
 
-                        Sep, 2018 - Present. Duration: <i><label id="years"></label> years <label id="months"></label>
-                            months</i>
-                        <dd>- <strong>Trinity Mobility Pvt. Ltd.</strong>, Bangalore, Karnataka
-                            <ul>
-                                <li>R&D on routing and geofencing for vehicle tracking. - (JavaScript)</li>
-                                <li>R&D on 3D Engine for disaster management project. - (JavaScript)</li>
-                            </ul>
-                        </dd>
-                        Aug, 2016 - Sep, 2018. Duration: <i>2 years 1 month</i>
-                        <dd>- <strong>MapmyIndia - CE Info Pvt. Ltd.</strong>, New Delhi, Delhi
-                            <ul>
-                                <li>R&D on Indoor mapping and routing technology using SLAM technique. - (NavVis)</li>
-                                <li>R&D on live tracking using 3D LiDAR asset tracking technology. - (Quanergy)</li>
-                                <li>Created a 3D Globe Engine for MapmyIndia Maps and data. - (Cesium, JS, HTML, PHP)</li>
-                                <li>Worked on in-house standards for High Definition Maps. - (QGIS, PostgreSQL)</li>
-                                <li>Creating a Web API for fetching GIS based Data. - (OpenLayers 3, Leaflet, JS,
-                                    Geoserver,
-                                    PostgreSQL)
-                                </li>
-                                <li>Created vector map for MapmyIndia which is being used in the company’s flagship
-                                    product-MapmyIndia Maps. - (JSON, JS, HTML)
-                                </li>
-                                <li>Developed in-house algorithm for GPS based automatic digitisation of road network.
-                                    -
-                                    (Python, PostGIS)
-                                </li>
-                                <li>GPS track based analysis for automated detection of new flyovers . - (Python,
-                                    PostGIS)
-                                </li>
-                                <li>Developed a dashboard for status monitoring of GPS track analysis project. - (PHP,
-                                    HTML,
-                                    PostgreSQL)
-                                </li>
-                            </ul>
-                        </dd>
-                        <dt class="text-primary">RESEARCH EXPERIENCE</dt>
-                        Aug, 2015 - Aug, 2016. Duration: <i>1 year</i>
-                        <dd>- <strong>Indian institute od Remote Sensing</strong>, Dehradun, Uttarakhand
-                            <ul>
+            <!--<div class="col-md-8 fluid float-right jumbotron">-->
 
-                                <li>Major Project on 3D City Modelling using OGC’s CityGML, Indoor network routing &
-                                    positioning - (CityGML, Python, KML, ArcPy, ArcGIS, SketchUp)
-                                </li>
-                                <ul>
-                                    <li>Proposed an Indoor routing extension of OGC’s CityGML Application Domain
-                                        Extension.
-                                    </li>
-                                    <li>3D LOD4 Modelling using CityGML schema with the help of Sketchup.</li>
-                                    <li>Indoor Network Routing on the ArcGIS network dataset using ArcPy.</li>
-                                    <li>Indoor positioning using WiFi network signals.</li>
-                                    <li>Subsurface pipeline mapping using Ground Penetrating RADAR.</li>
-                                </ul>
-                                <li>Minor project on python based Android App for emergency services. - (Python4A,
-                                    Google
-                                    Rev-Geocode API, PyQt4)
-                                </li>
-                                <ul>
-                                    <li>Presented a paper at a National Conference FOSS4G India- 2015</li>
-                                    <li>An SOS button Android App for emergencies.</li>
-                                    <li>Google Reverse Geocoding API for address of the victim.</li>
-                                </ul>
-                                <li>Micro projects: Indian Infrastructure: A GIS Website</li>
-                                <ul>
-                                    <li>A website to display various layers of Indian Infrastructure.</li>
-                                </ul>
-                            </ul>
-                        </dd>
-                        <dt class="text-primary">EDUCATION</dt>
-                        Aug, 2014 - Aug, 2016
-                        <dd>- <strong>Master of Technology</strong>, Remote Sensing and GIS, <i>Indian Institute of
-                                Remote
-                                Sensing</i>
-                            <ul>
-                                <li>8.17/10 CGPA</li>
-                            </ul>
-                        </dd>
-                        <dd>- <strong>Bachelor of Engineering</strong>, Electrical Engineering, <i>Bhilai Institute of
-                                Technology</i>
-                            <ul>
-                                <li>7.87/10 CGPA</li>
-                            </ul>
-                        </dd>
-                        <dd>- <strong>Senior Secondary Education</strong>, Computer Science, <i>DAV Public School</i>
-                            <ul>
-                                <li>83%</li>
-                            </ul>
-                        </dd>
-                        <dt class="text-primary text-justify">PUBLICATIONS</dt>
-                        <dd class="text-justify">- Dutta, A., Saran, S., & Kumar, A. S. (2017). <strong>Development of CityGML Application
-                                Domain
-                                Extension for Indoor Routing and Positioning</strong>.
-                            Journal of the Indian Society of Remote Sensing, 45(6), 993-1004.
-                            <ul>
-                                <li>This article proposes an extension of the CityGML schema to add attributes of
-                                    indoor
-                                    routing and positioning
-                                    using the facility of Application Domain Extension (ADE).
-                                </li>
-                            </ul>
-                        </dd>
-                        <dd class="text-justify">- Dutta, A., & Saran, S. <strong>3D modeling of subsurface utilities using Ground
-                                Penetrating
-                                Radar (GPR) data</strong>.
-                            Journal of Geomatics. Vol 10 No. 2 October 2016 (p. 217). (Short note)
-                            <ul>
-                                <li>This article represents the outputs (radius of pipes and 3D models) obtained by
-                                    mapping
-                                    the subsurface utilities using a Ground Penetrating RADAR.
-                                </li>
-                            </ul>
-                        </dd>
-                        <dd class="text-justify">- Dutta, A. and Agarwal, N. <strong>Android based crime mapping using python</strong>. In:
-                            FOSS4G India 2015 - Conference Web Proceedings, 9-10th June, 2015. Dehradun.
-                            <ul>
-                                <li>This conference presentation is a showcase of an Android application built using
-                                    python
-                                    which alerts the device’s location, IMEI, & IMSI numbers onto the server display
-                                    unit.
-                                </li>
-                            </ul>
-                        </dd>
-                        <dt class="text-primary">ACHIEVEMENTS</dt>
-                        <dd class="text-justify">- Best Paper Award for my paper titled 'Development of CityGML Application Domain Extension
-                            for
-                            Indoor Routing and Positioning' published in Journal of Indian Society of Remote Sensing
-                            2017.
-                        </dd>
-
-                        <dd class="text-justify">- Represented MapmyIndia at the Auto Expo (Greater Noida), 2018 for 3D LiDAR asset tracking
-                            technology.
-                        </dd>
-                        <dd class="text-justify">- Presented a paper at National Conference on Free and Open Source Software for Geospatial
-                            FOSS4G-India 2015.
-                        </dd>
-                        <dd class="text-justify">- Winner Basketball and Runners up Volleyball, Chess, Carrom in 2017 MapmyIndia’s Sports
-                            Fest.
-                        </dd>
-                        <dd class="text-justify">- Winner Badminton Mix Doubles, Volleyball, Basketball, Tug of War and Runners up Badminton
-                            Men
-                            Doubles in 2016 Sports Tournament, IIRS-ISRO, Dehradun.
-                        </dd>
-                        <dd>- Winner of Best Mechanical Design in Air Boat racing in Kshitij’12, an IIT KGP fest.</dd>
-                        <dd>- Winner of Inter College & Inter Zone Football Championship, BIT, Durg (2012-13).</dd>
-
-                    </dl>
-                </div>
-            </div>
+            <!--</div>-->
         </div>
-
-        <!--<div class="col-md-8 fluid float-right jumbotron">-->
-
-        <!--</div>-->
-
         <div class="footer-copyright text-right fixed-bottom py-3 font-italic font-weight-lighter">2019 ©
             <a> Arnab Dutta</a>
         </div>
