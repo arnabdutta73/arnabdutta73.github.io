@@ -345,10 +345,10 @@
     m = n.getMonth() + 1;
     var start_year = 2019;
     var start_month = 7;
-    var total_months = ((y - 2019) * 12) + 3 + m;
+    var total_months = ((y - start_year-1) * 12) + m + (12-start_month);
     var years = 0;
     if (total_months > 12) {
-        var years = int(total_months / 12);
+        var years = ParseInt(total_months / 12);
         var months = total_months - (12 * years);
     }
     else {
