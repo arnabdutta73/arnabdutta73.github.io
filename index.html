@@ -349,7 +349,7 @@
     var total_months = ((y - start_year-1) * 12) + m + (12-start_month);
     var years = 0;
     if (total_months > 12) {
-        var years = ParseInt(total_months / 12);
+        var years = parseInt(total_months / 12);
         var months = total_months - (12 * years) + 1;
     }
     else {
@@ -361,3 +361,4 @@
 </script>
 
 </html>
+>>>>>>> dd2e1884afa770d54cb5bbff3e7f062e1028bfe1
