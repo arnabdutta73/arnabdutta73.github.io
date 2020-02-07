@@ -161,10 +161,11 @@
                             July, 2019 - Present. Duration: <i><label id="years"></label> years <label
                                     id="months"></label>
                                 months</i>
-                            <dd>- <strong>Trinity Mobility Pvt. Ltd.</strong>, Bangalore, Karnataka
+                            <dd>- <strong>Mercedes Benz Research & Development India</strong>, Bangalore, Karnataka
                                 <ul>
-                                    <li>R&D on routing and geofencing for vehicle tracking. - (JavaScript)</li>
-                                    <li>R&D on 3D Engine for disaster management project. - (JavaScript)</li>
+                                    <li>LiDAR Data analysis for Autonomous driving.</li>
+                                    <li>R&D on Physics based LiDAR Sensors.</li>
+                                    <li>Simulation Testing.</li>
                                 </ul>
                             </dd>
                             Sep, 2018 - April, 2019. Duration: <i>0 years 7 month</i>
@@ -345,7 +346,7 @@
     m = n.getMonth() + 1;
     var start_year = 2019;
     var start_month = 7;
-    var total_months = ((y - 2019) * 12) + 3 + m;
+    var total_months = ((y - start_year-1) * 12) + m + (12-start_month);
     var years = 0;
     if (total_months > 12) {
         var years = parseInt(total_months / 12);
