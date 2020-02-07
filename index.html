@@ -350,7 +350,7 @@
     var years = 0;
     if (total_months > 12) {
         var years = ParseInt(total_months / 12);
-        var months = total_months - (12 * years);
+        var months = total_months - (12 * years) + 1;
     }
     else {
         var months = m + 3;
