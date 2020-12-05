@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+<!-- Kite Publisher Library -->
+<script src="https://kite.trade/publisher.js?v=3"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -62,6 +63,70 @@
         }
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+	<!-- A Kite button will be generated inside this container //-->
+<p id="default-button"> </p>
+
+<!-- The basket will be linked to this element's onClick //-->
+<button id="custom-button">Buy the basket</button>
+
+<!-- Include the plugin //-->
+<script src="https://kite.trade/publisher.js?v=3"></script>
+
+<script>
+// Only run your custom code once KiteConnect has fully initialised.
+// Use KiteConnect.ready() to achieve this.
+KiteConnect.ready(function() {
+    // Initialize a new Kite instance.
+    // You can initialize multiple instances if you need.
+    var kite = new KiteConnect("2culbqpnk6ze0k4l");
+
+    // Add a stock to the basket
+    kite.add({
+        "exchange": "NSE",
+        "tradingsymbol": "INFY",
+        "quantity": 5,
+        "transaction_type": "BUY",
+        "order_type": "MARKET"
+    });
+
+    // Add another stock
+    kite.add({
+        "exchange": "NSE",
+        "tradingsymbol": "SBIN",
+        "quantity": 1,
+        "order_type": "LIMIT",
+        "transaction_type": "SELL",
+        "price": 105
+    });
+
+    // Add a Bracket Order
+    kite.add({
+        "tradingsymbol": "RELIANCE",
+        "exchange": "NSE",
+        "transaction_type": "BUY",
+        "order_type": "LIMIT",
+        "product": "MIS",
+        "price": 915.15,
+        "quantity": 1,
+        "variety": "bo",
+        "stoploss": 5,
+        "squareoff": 7,
+        "trailing_stoploss": 1.5,
+        "readonly": true
+    });
+
+    // Register an (optional) callback.
+    kite.finished(function(status, request_token) {
+        alert("Finished. Status is " + status);
+    });
+
+    // Render the in-built button inside a given target
+    kite.renderButton("#buy");
+
+    // OR, link the basket to any existing element you want
+    //kite.link("#custom-button");
+});
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My CV</title>
@@ -80,10 +145,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./geos.html">Geospatial Stuff</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="./contact.html">Contact Me</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="./investment.html">Investments</a>
                     </li>
                 </ul>
@@ -115,22 +180,13 @@
 
                     <h3 class="display-2 text-primary">
                         <i class="fa fa-address-book" style="font-size:36px"></i>Contact Me</h3>
-
-                    <dl>
-                        <dd><i class="fa fa-at" style="font-size:24px"></i> Email: <a
-                                href="mailto:arnabdutta73@gmail.com">arnabdutta73@gmail.com</a></dd>
-                        <dd><i class="fa fa-mobile" style="font-size:24px"></i> Number: 9406024573, 9582582587</dd>
-                        <dd><i class="fa fa-map-marker" style="font-size:24px"></i> Place: <a
-                                href="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9538477,77.3507442,10z/data=!3m1!4b1!4m5!3m4!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627?hl=en-IN"
-                                target="_blank"> Bangalore, Karnataka</a></dd>
-                        <dd><i class="fa fa-address-card" style="font-size:24px"></i> LinkedIn: <a
-                                href="https://www.linkedin.com/in/arnab-dutta/">
-                                Arnab Dutta</a></dd>
-                        <dd><i class="fa fa-address-card" style="font-size:24px"></i> GitHub: <a
-                                href="https://github.com/arnabdutta73">
-                                Arnab Dutta</a></dd>
-
-                    </dl>
+						<!--  A link that initiates a buy (market) of the SBIN stock //-->
+							<kite-button href="#" data-kite="2culbqpnk6ze0k4l"
+							data-exchange="NSE"
+							data-tradingsymbol="SBIN"
+							data-transaction_type="BUY"
+							data-quantity="1"
+							data-order_type="MARKET">Buy SBI stock</kite-button>
                 </div>
             </div>
             <!-- </div> -->
