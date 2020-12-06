@@ -11,12 +11,14 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--pie charts lib-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <head>
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
-        type="text/css">
+          type="text/css">
     <style>
         .map {
             height: 400px;
@@ -61,18 +63,28 @@
             mix-blend-mode: screen;
             /* This makes the cutout text possible */
         }
+
+
+
+
+
+
+
+
+
+
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-	<!-- A Kite button will be generated inside this container //-->
-<p id="default-button"> </p>
+    <!-- A Kite button will be generated inside this container //-->
+    <p id="default-button"></p>
 
-<!-- The basket will be linked to this element's onClick //-->
-<button id="custom-button">Buy the basket</button>
+    <!-- The basket will be linked to this element's onClick //-->
+    <button id="custom-button">Buy the basket</button>
 
-<!-- Include the plugin //-->
-<script src="https://kite.trade/publisher.js?v=3"></script>
+    <!-- Include the plugin //-->
+    <script src="https://kite.trade/publisher.js?v=3"></script>
 
-<script>
+    <script>
 // Only run your custom code once KiteConnect has fully initialised.
 // Use KiteConnect.ready() to achieve this.
 KiteConnect.ready(function() {
@@ -126,76 +138,294 @@ KiteConnect.ready(function() {
     // OR, link the basket to any existing element you want
     //kite.link("#custom-button");
 });
-</script>
+
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('inv_dist'));
+
+        chart.draw(data, options);
+      }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My CV</title>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row-fluid" style="padding:20px;">
+<div class="container-fluid">
+    <div class="row-fluid" style="padding:20px;">
 
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"">
-                    <a class=" navbar-brand display-4" href="#">Arnab</a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./geos.html">Geospatial Stuff</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./contact.html">Contact Me</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./investment.html">Investments</a>
-                    </li>
-                </ul>
-            </nav>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class=" navbar-brand display-4" href="#">Arnab</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./geos.html">Geospatial Stuff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact.html">Contact Me</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./investment.html">Investment Planning</a>
+                </li>
+            </ul>
+        </nav>
 
-        </div>
-        <div class="parallax" style="height: 400px">
-            <h6 class = "text" style="text-justify: left; width: auto; height: auto; font-size: 25px; padding-top: 2px; text-shadow: 5px 2px 2px white, 1px white;">
-                    The good life is a process, not a state of being.<br> - Carl Rogers</h6>
-        </div>
-        <div class="parallax">
+    </div>
+    <!--    <div class="parallax" style="height: 400px">-->
+    <!--        <h6 class="text"-->
+    <!--            style="text-justify: left; width: auto; height: auto; font-size: 25px; padding-top: 2px; text-shadow: 5px 2px 2px white, 1px white;">-->
+    <!--            Price is what you pay. Value is what you get.<br> - Warren Buffett</h6>-->
+    <!--    </div>-->
+    <div class="parallax">
         <div class="row" style="opacity: 0.95;">
-            <div class="col-md-4">
-                <div class="card border shadow-lg p-4 mb-4 bg-white" style="width:100%">
-                    <img src="images/DP2.jpg" class="rounded float-left img-fluid" alt="Display Picture" height="500px">
 
-                    <div class="card-body">
-
-                        <h4 class="card-title display-4">Arnab Dutta</h4>
-
-                    </div>
-                </div>
-            </div>
 
             <!-- <div class="row-fluid"> -->
-            <div class="col-md-8 card border shadow-lg p-4 mb-4 bg-white float-right" style="width:100%">
+            <div class="card border shadow-lg p-4 mb-4 bg-white float-right" style="width:100%">
                 <div class="card-body">
 
 
-                    <h3 class="display-2 text-primary">
-                        <i class="fa fa-address-book" style="font-size:36px"></i>Contact Me</h3>
-						<!--  A link that initiates a buy (market) of the SBIN stock //-->
-							<kite-button href="#" data-kite="2culbqpnk6ze0k4l"
-							data-exchange="NSE"
-							data-tradingsymbol="SBIN"
-							data-transaction_type="BUY"
-							data-quantity="1"
-							data-order_type="MARKET">Buy SBI stock</kite-button>
+                    <h3 class="display-2 text-primary text-center">
+                        <i class="fa fa-address-book" style="font-size:36px"></i>Investment Planning</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <table class="salary_dist text-center">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1 text-center">
+                                            <div class="text-center">
+                                                Salary
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="salary"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="salary_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1 text-center">
+                                            <div class="text-center">
+                                                Savings
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="savings"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="savings_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1">
+                                            <div class="text-center">
+                                                Rent/ Home EMI
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="rent"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="rent_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1">
+                                            <div class="text-center">
+                                                Food
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="food"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="food_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1">
+                                            <div class="text-center">
+                                                Clothing
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="cloth"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="cloth_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="m-3 p-1">
+                                            <div class="text-center">
+                                                Other Expenses
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">₹</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="expenses"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-3 p-1">
+                                                <input type="text" class="form-control" id="expenses_p"
+                                                       aria-label="Amount (to the nearest rupee)">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+
+                    <!--salary distribution pie chart-->
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-8">
+                                <div class="" id="salary_dist"></div>
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+
+                    <!--risk-o-meter-->
+                    <div>
+                        risk-o-meter
+                    </div>
+                    <!--investment recommendation chart-->
+                    <div>
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-8">
+                                <div class="" id="inv_dist"></div>
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+
+                    </div>
+                    <!--compounding graph-->
+                    <div>
+                        compounding graph
+                    </div>
+                    </div>
+
+                    <!--  A link that initiates a buy (market) of the SBIN stock //-->
+                    <kite-button href="#" data-kite="2culbqpnk6ze0k4l"
+                                 data-exchange="NSE"
+                                 data-tradingsymbol="SBIN"
+                                 data-transaction_type="BUY"
+                                 data-quantity="1"
+                                 data-order_type="MARKET">Buy SBI stock
+                    </kite-button>
                 </div>
             </div>
             <!-- </div> -->
         </div>
-        </div>
-        <div class="footer-copyright text-right fixed-bottom py-3 font-italic font-weight-lighter">2019 ©
-            <a> Arnab Dutta</a>
-        </div>
     </div>
+    <div class="footer-copyright text-right fixed-bottom py-3 font-italic font-weight-lighter">2019 ©
+        <a> Arnab Dutta</a>
+    </div>
+</div>
 
 </body>
 
