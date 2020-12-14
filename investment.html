@@ -117,6 +117,10 @@
 
 
 
+
+
+
+
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <!-- A Kite button will be generated inside this container //-->
@@ -141,6 +145,10 @@
 
 
 
+
+
+
+
     </style>
     <script>
 // Only run your custom code once KiteConnect has fully initialised.
@@ -154,6 +162,13 @@ KiteConnect.ready(function() {
     kite.add({
         "exchange": "NSE",
         "tradingsymbol": "INFY",
+        "quantity": 5,
+        "transaction_type": "BUY",
+        "order_type": "MARKET"
+    });
+    kite.add({
+        "exchange": "NSE",
+        "tradingsymbol": "SBI",
         "quantity": 5,
         "transaction_type": "BUY",
         "order_type": "MARKET"
@@ -207,11 +222,11 @@ var needs_p = document.getElementById('needs_p');
 var wants = document.getElementById('wants');
 var wants_p = document.getElementById('wants_p');
 
-salary.value = 1000000
+salary.value = 600000
 
-savings_p.value = 34;
-needs_p.value = 33;
-wants_p.value = 33;
+savings_p.value = 40;
+needs_p.value = 30;
+wants_p.value = 30;
 
 savings.value = parseInt(savings_p.value)*parseInt(salary.value)*0.01;
 needs.value = parseInt(needs_p.value)*parseInt(salary.value)*0.01;
@@ -226,7 +241,8 @@ $('#salary').on('change', function() {
     wants.value = parseInt(wants_p.value)*parseInt(salary.value)*0.01;
     plot_salary();
     plot_compound();
-    console.log(savings.value);
+    var wealth = calculateWealth20();
+    calculateYears2Zero(wealth);
 });
 
 $('#needs').on('change', function() {
@@ -235,6 +251,8 @@ $('#needs').on('change', function() {
     savings.value = parseInt(savings_p.value)*parseInt(salary.value)*0.01;
     plot_salary();
     plot_compound();
+    var wealth = calculateWealth20();
+    calculateYears2Zero(wealth);
 });
 $('#needs_p').on('change', function() {
     needs.value = (parseInt(needs_p.value)*salary.value)/100
@@ -242,6 +260,8 @@ $('#needs_p').on('change', function() {
     savings.value = parseInt(savings_p.value)*parseInt(salary.value)*0.01;
     plot_salary();
     plot_compound();
+    var wealth = calculateWealth20();
+    calculateYears2Zero(wealth);
 });
 $('#wants').on('change', function() {
     wants_p.value = (wants.value/salary.value)*100;
@@ -249,6 +269,8 @@ $('#wants').on('change', function() {
     savings.value = parseInt(savings_p.value)*parseInt(salary.value)*0.01;
     plot_salary();
     plot_compound();
+    var wealth = calculateWealth20();
+    calculateYears2Zero(wealth);
 });
 $('#wants_p').on('change', function() {
     wants.value = (parseInt(wants_p.value)*salary.value)/100
@@ -256,6 +278,8 @@ $('#wants_p').on('change', function() {
     savings.value = parseInt(savings_p.value)*parseInt(salary.value)*0.01;
     plot_salary();
     plot_compound();
+    var wealth = calculateWealth20();
+    calculateYears2Zero(wealth);
 });
 
 function plot_salary(){
@@ -283,23 +307,57 @@ function plot_salary(){
 
 function getxy(roi, years){
     var i;
-    amount = parseInt(savings.value);
+    //principle = parseInt(savings.value);
+    principle = 1000000;
     var x = [];
     var y = [];
+    final_amount = principle;
 
     for (i = 1; i <= years; i++) {
-      y.push(amount);
-      amount += i*roi*parseInt(savings.value)*0.01;
-      x.push(i);
+        final_amount = final_amount*(1 + roi*0.01);
+        y.push(final_amount);
+        final_amount += principle;
+        x.push(i);
     }
+    //console.log(final_amount.toLocaleString('en-IN'));
     return [x, y];
 }
 
+function calculateYears2Zero(wealth){
+    var expense = wealth[1];
+    var count = 0;
+    for(i=wealth[0];i>0;i=i-expense){
+        count += 1;
+        expense = expense*(1+0.06);
+    }
+    console.log(count);
+    var years2zero = document.getElementById('years2zero');
+    years2zero.innerHTML = count;
+}
+function calculateWealth20(){
+    var total_savings = 0;
+    var income = parseInt(document.getElementById('salary').value);
+    var savings = parseInt(document.getElementById('savings').value);
+    var needs = parseInt(document.getElementById('needs').value);
+    var wants = parseInt(document.getElementById('wants').value);
+    var expense = needs + wants;
+    for(var i = 1; i <= 20; i++){
+        income = Math.round(income+(income*0.08));
+        expense = Math.round(expense+(expense*0.06));
+        savings = Math.round(income-expense);
+        total_savings += savings;
+    }
+    var wealth = document.getElementById('wealth');
+    wealth.innerHTML = total_savings.toLocaleString('en-IN');
+    return [total_savings, expense];
+}
 
+var wealth = calculateWealth20();
+calculateYears2Zero(wealth);
 
 function plot_compound(){
     var years, roi;
-    years = 10;
+    years = 20;
     roi = 8;
     var xy = getxy(roi, years);
     var trace1 = {
@@ -310,7 +368,7 @@ function plot_compound(){
     };
 
     var years, roi;
-    years = 10;
+    years = 20;
     roi = 10;
     var xy = getxy(roi, years);
 
@@ -449,15 +507,12 @@ $('#selector button').click(function() {
     $(this).addClass('active').siblings().removeClass('active');
 
     if($(this).text() == 'Low'){
-        console.log($(this).text());
         Plotly.newPlot('inv_dist', data1, layout1);
     }
     if($(this).text() == 'Medium'){
-        console.log($(this).text());
         Plotly.newPlot('inv_dist', data2, layout2);
     }
     if($(this).text() == 'High'){
-        console.log($(this).text());
         Plotly.newPlot('inv_dist', data3, layout3);
     }
 });
@@ -492,7 +547,6 @@ function tableCreate(){
     var income = 50000*12;
     var expense = 30000*12;
     var savings = income-expense;
-    console.log(savings);
     var total_savings = 0;
 
 
@@ -549,6 +603,10 @@ tableCreate();
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+
+
+
 
 
 
@@ -713,7 +771,8 @@ $(document).ready(function(){
                             <h1>How to invest?</h1>
                             <p class="text-justify">
                                 To know how to invest, firstly, we need to analyse the current situation. Put your
-                                information in the below places to know your needs, wants, and savings.
+                                information in the below places to visualise your needs, wants, and savings. Don't
+                                worry, the information will not be saved.
                             </p>
                         </div>
                         <div class="row">
@@ -723,7 +782,9 @@ $(document).ready(function(){
                                     <tr>
                                         <th scope="row" class="m-3 p-1 text-center">
                                             <div class="text-center">
-                                                Salary
+                                                <a href="#" data-toggle="tooltip"
+                                                   title="Yearly in-hand salary or income from any sourcess"
+                                                   data-placement="top" data-original-title="Default tooltip">Salary</a>
                                             </div>
                                         </th>
                                         <td>
@@ -749,7 +810,10 @@ $(document).ready(function(){
                                     <tr>
                                         <th scope="row" class="m-3 p-1 text-center">
                                             <div class="text-center">
-                                                Savings
+                                                <a href="#" data-toggle="tooltip"
+                                                   title="This field is intentionally disabled so that you have to concisously analyse and reduce your wants or re-evaluate your needs in order to increase your savings"
+                                                   data-placement="top"
+                                                   data-original-title="Default tooltip">Savings</a>
                                             </div>
                                         </th>
                                         <td>
@@ -774,7 +838,10 @@ $(document).ready(function(){
                                     <tr>
                                         <th scope="row" class="m-3 p-1">
                                             <div class="text-center">
-                                                Needs
+                                                <a href="#" data-toggle="tooltip"
+                                                   title="All your needs such as home rent or EMI, food, cloth, or even internet which has become a necessity"
+                                                   data-placement="top"
+                                                   data-original-title="Default tooltip">Needs</a>
                                             </div>
                                         </th>
                                         <td>
@@ -799,7 +866,10 @@ $(document).ready(function(){
                                     <tr>
                                         <th scope="row" class="m-3 p-1">
                                             <div class="text-center">
-                                                Wants
+                                                <a href="#" data-toggle="tooltip"
+                                                   title="All your wants such as entertainment, holidays, hobbies, social obligations, etc."
+                                                   data-placement="top"
+                                                   data-original-title="Default tooltip">Wants</a>
                                             </div>
                                         </th>
                                         <td>
@@ -830,15 +900,24 @@ $(document).ready(function(){
                                 <div class="" id="salary_dist"></div>
                             </div>
                         </div>
+                        <div class="row">
+                            <p class="text-justify">Based on the above values, after 20 years, your wealth accumulated will be &#8377;&nbsp; </p>
+                            <h5 class="text-justify" id="wealth"></h5>
+                            <p class="text-justify">This uses the same formula which was used to calculate the wealth in the above table.</p>
+                            <p class="text-justify">This amount will become zero in: &nbsp;</p>
+                            <h5 class="text-justify" id="years2zero"></h5>  &nbsp;years.
 
+                        </div>
                         <!--compounding graph-->
                         <div class="col-12">
                             <div class="" id="compounding"></div>
                         </div>
-                    </div>
 
-
-                    <div>
+                        <div class="row">
+                            <h1>What to invest in?</h1>
+                            <p class="text-justify">
+                            </p>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <!--risk-o-meter-->
@@ -860,14 +939,14 @@ $(document).ready(function(){
                     </div>
                 </div>
 
-                <!--  A link that initiates a buy (market) of the SBIN stock //-->
-                <!--                <kite-button href="#" data-kite="2culbqpnk6ze0k4l"-->
-                <!--                             data-exchange="NSE"-->
-                <!--                             data-tradingsymbol="SBIN"-->
-                <!--                             data-transaction_type="BUY"-->
-                <!--                             data-quantity="1"-->
-                <!--                             data-order_type="MARKET">Buy SBI stock-->
-                <!--                </kite-button>-->
+                <!--                  A link that initiates a buy (market) of the SBIN stock //-->
+                <kite-button href="#" data-kite="2culbqpnk6ze0k4l"
+                             data-exchange="NSE"
+                             data-tradingsymbol="SBIN"
+                             data-transaction_type="BUY"
+                             data-quantity="1"
+                             data-order_type="MARKET">Buy SBI stock
+                </kite-button>
                 <p>
                     <b>Disclaimer</b>: I am not a professional legal or financial advisor and the contents written in
                     this website are based on my
