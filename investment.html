@@ -136,6 +136,14 @@
 
 
 
+
+
+
+
+
+
+
+
     </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <!-- A Kite button will be generated inside this container //-->
@@ -192,6 +200,14 @@
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -500,12 +516,12 @@ Plotly.newPlot('inflation', data, layout);
 
 
 var data1 = [{
-  values: [50, 40, 10],
-  labels: ['Debt', 'MF', 'Equity'],
+  values: [20, 25, 25, 10, 10, 10],
+  labels: ['FD', 'PPF', 'Gold', 'Debt', 'Equity', 'Real Estate'],
   textinfo: "label+percent",
   type: 'pie',
   marker: {
-    colors: ['rgb(91, 80, 212)', 'rgb(181, 80, 212)', 'rgb(80, 183, 212)']
+    colors: ['rgb(252, 78, 3)', 'rgb(190, 252, 3)', 'rgb(252, 215, 3)', 'rgb(3, 252, 240)', 'rgb(107, 3, 252)', 'rgb(252, 3, 165)']
   },
 }];
 
@@ -517,12 +533,12 @@ var layout1 = {
 };
 
 var data2 = [{
-  values: [30, 50, 20],
-  labels: ['Debt', 'MF', 'Equity'],
+  values: [20, 15, 15, 15, 15, 20],
+  labels: ['FD', 'PPF', 'Gold', 'Debt', 'Equity', 'Real Estate'],
   textinfo: "label+percent",
   type: 'pie',
   marker: {
-    colors: ['rgb(91, 80, 212)', 'rgb(181, 80, 212)', 'rgb(80, 183, 212)']
+    colors: ['rgb(252, 78, 3)', 'rgb(190, 252, 3)', 'rgb(252, 215, 3)', 'rgb(3, 252, 240)', 'rgb(107, 3, 252)', 'rgb(252, 3, 165)']
   },
 }];
 
@@ -534,12 +550,12 @@ var layout2 = {
 };
 
 var data3 = [{
-  values: [20, 40, 40],
-  labels: ['Debt', 'MF', 'Equity'],
+  values: [10, 15, 5, 10, 30, 30],
+  labels: ['FD', 'PPF', 'Gold', 'Debt', 'Equity', 'Real Estate'],
   textinfo: "label+percent",
   type: 'pie',
   marker: {
-    colors: ['rgb(91, 80, 212)', 'rgb(181, 80, 212)', 'rgb(80, 183, 212)']
+    colors: ['rgb(252, 78, 3)', 'rgb(190, 252, 3)', 'rgb(252, 215, 3)', 'rgb(3, 252, 240)', 'rgb(107, 3, 252)', 'rgb(252, 3, 165)']
   },
 }];
 
@@ -652,6 +668,14 @@ tableCreate();
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -968,17 +992,186 @@ $(document).ready(function(){
                         </div>
                         <p class="text-justify">
                             As can be seen in the graph, the amount at the end of 20 years significantly increases and
-                            possibly adds 4-5 years further for the wealth to reach zero. So, you would need to analyse
-                            two things in order to gain those extra years. One is to scrutinize the needs and wants and
-                            reclassify the expenditure in order to increase the savings. Second task is to find the
-                            investment instruments to invest in which will give you proper return.
+                            possibly adds 4-5 years further for the wealth to reach zero.
+                        </p>
+                        <p class="text-justify">
+                            So, you would need to analyse two things in order to gain those extra years.
+                        <ul>
+
+                            <li>
+                                One is to scrutinize the needs and wants and reclassify the expenditure in order to
+                                increase the savings.
+                            </li>
+                            <li>
+                                Second task is to screen the investment instruments to invest in which will give you
+                                proper return.
+                            </li>
+                        </ul>
+                        Lets see what are the investment instruments available to invest in the next section.
+
                         </p>
 
 
                         <div class="row">
                             <h1>What to invest in?</h1>
                             <p class="text-justify">
+                                There are numerous instruments available in the market to put your money into and with
+                                that
+                                comes the huge task of planning of the instruments which are suitable for you. Here is a
+                                list
+                                of instruments:
                             </p>
+                            <ul>
+                                <li>
+                                    Primary; easy; safe; low return.
+                                    <ul>
+                                        <li>
+                                            Savings Account
+                                        </li>
+                                        <li>
+                                            Fixed Deposit (FD)
+                                        </li>
+                                        <li>
+                                            Recurring Deposit (RD)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Tax Saving; long term; locked-in.
+                                    <ul>
+                                        <li>
+                                            Public Provident Fund (PPF)
+                                        </li>
+                                        <li>
+                                            National Pension System (NPS)
+                                        </li>
+                                        <li>
+                                            Equity Linked Savings Scheme (ELSS)
+                                        </li>
+                                        <li>
+                                            Tax Savings Fixed Deposit
+                                        </li>
+                                        <li>
+                                            Unit Linked Insurance Plans (ULIPs)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Commodities; all-time;
+                                    <ul>
+                                        <li>
+                                            Gold
+                                        </li>
+                                        <li>
+                                            Silver
+                                        </li>
+                                        <li>
+                                            Metals (other than gold and silver)
+                                        </li>
+                                        <li>
+                                            Energy (Crude oil, Natural gas)
+                                        </li>
+                                        <li>
+                                            Food (Cereals, pulses, fibres, oil/oil seeds, etc.)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Real Estate; all-time;
+                                    <ul>
+                                        <li>
+                                            Residential (Apartments, Condominiums, cooperatives)
+                                        </li>
+                                        <li>
+                                            Commercial (Malls, shops, hospitals, offices, hotels)
+                                        </li>
+                                        <li>
+                                            Real Estate Investment Trusts (REITs)
+                                        </li>
+                                        <li>
+                                            Land (Farm, Cattle, forest)
+                                        </li>
+                                        <li>
+                                            Industrial (warehouses, godowns)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Debt; Medium Risk; Medium Reward; Money market;
+                                    <ul>
+                                        <li>
+                                            Mutual Funds (Debt)
+                                        </li>
+                                        <li>
+                                            Corporate bonds
+                                        </li>
+                                        <li>
+                                            Government Securities
+                                        </li>
+                                        <li>
+                                            Treasury Bills
+                                        </li>
+                                        <li>
+                                            CP/ CD (Commercial papers/ Certificate of Deposits)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Equity; Share market; volatile; high-risk; high-reward
+                                    <ul>
+                                        <li>
+                                            Market Capitalisation (Large, Medium, Small, multi, hybrid)
+                                        </li>
+                                        <li>
+                                            Sector (Food, Automotive, Drinks, Energy, Finance, Healthcare, Construction,
+                                            etc.)
+                                        </li>
+                                        <li>
+                                            Theme (Electric Vehicles, Agriculture, Urban, Rural, etc.)
+                                        </li>
+                                        <li>
+                                            Mutual Funds (Equity)
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="text-justify">
+                                Now, you can see there are so many instruments listed and there are many which are not
+                                even listed here, one obvious question arises in the mind is that which of these are the
+                                perfect products of investment. Let me get this very clear: There is no one or perfect
+                                investment product. Every individual has their own goals, risk appetite, dependencies,
+                                etc. So, YOU have to identify which product to choose for which, you need to find out
+                                what your goals are, what is your risk appetite, etc. Once your goals are clear, you can
+                                choose the products and start investing.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <h4 class="text-justify">
+                                Risk Management
+                            </h4>
+                            <p class="text-justify">
+                                Risk is a real entity which all of us should always be aware of and try to mitigate that
+                                risk to live a good life. There are a lot of risks involved in our day to day
+                                activities.<br>
+                                ___________________________________________________________________________________<br>
+                                Under Construction<br>
+                                ___________________________________________________________________________________<br>
+                                Diversify
+                                Risk apetite
+                                Equity(stocks), Debt(FD, PF, Bonds, GS), Real Estate(House, Comercial, REITs),
+                                ETFs(indices), commodities, international(all of the previous classes in foreign
+                                market).
+                                With averaging, you'll buy more shares when prices are low, and fewer when prices are
+                                high.
+                                Exit strategy
+                                have stocks with mixed-income, growth, market capitalization among other metrics<br>
+                                ___________________________________________________________________________________
+                            </p>
+                            <p class="text-justify">
+                                This chart is just an example of risk vs portfolio diversification to understand how it
+                                works and could be a safe way to park your hard earned money
+                            </p>
+
                         </div>
                         <div class="row">
                             <div class="col-6">
@@ -997,7 +1190,6 @@ $(document).ready(function(){
                                 <div class="" id="inv_dist"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
